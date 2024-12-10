@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+}
+/* Header Styling */
+.header {
+  background-color: #ff5722; /* Vibrant orange for energy */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+
+/* Hero Section Styling */
+.hero {
+  background-color: #009688; /* Teal for calm and balance */
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+
+
+.card {
+  margin-bottom: 20px;
+}
+
+footer a {
+  text-decoration: none;
+}
