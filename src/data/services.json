@@ -1,0 +1,18 @@
+[
+  {
+    "service": "Yoga",
+    "description": "Relaxing yoga sessions for all levels.",
+    "image": "/images/yoga.jpg"
+  },
+  {
+    "service": "Massage",
+    "description": "Rejuvenating massage therapy.",
+    "image": "/images/Massage.jpg"
+  },
+  {
+    "service": "Therapy",
+    "description": "Professional therapy sessions.",
+    "image": "/images/therapy.jpg1.jpg"
+  }
+]
+

@@ -4,12 +4,14 @@ import HeroSection from './components/HeroSection';
 import ServiceCard from './components/ServiceCard';
 import Footer from './components/Footer';
 import './App.css';
+import ServiceSection from "./components/ServiceSection";
 
 function App() {
   return (
     <div>
       <Header />
       <HeroSection />
+      <ServiceSection />
       <div className="container my-5">
         <div className="row">
           <ServiceCard title="Yoga" description="Relax and rejuvenate with our yoga classes." image="/assets/yoga.jpg" />
