@@ -34,11 +34,13 @@ function Header({ activeSection, setActiveSection }) {
         {/* Display the logo */}
         <a className="navbar-brand" href="#">
           <img
-            src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
-            alt="Wellness Center Logo"
-            className="logo"
-          />
-          <span className="Haven Wellness Center">Haven Wellness Center</span>
+           
+    src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
+    alt="Wellness Center Logo"
+    className="logo"
+  />
+  <h1 className="app-name">Haven Wellness Center</h1>
+ 
         </a>
 
         {/* Toggle button for small screens */}
