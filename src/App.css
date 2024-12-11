@@ -5,8 +5,18 @@ html {
 
 body {
   font-family: Arial, sans-serif;
+
+}
+/* Overall header styling */
+.header {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space between left and right sections */
+  padding: 10px 20px;
+  background-color: #889e98;
 }
 .logo {
+  display: flex;
   width :200px; /* Adjust the size as needed */
   height:auto;
   margin-right: 20px;
@@ -18,10 +28,10 @@ body {
     }
     }
   }
-  .custom-name {
+  .app-name {
     font-family: 'Poppins', sans-serif; /* A clean and modern font */
     font-size: 2rem; /* Adjust the size to your preference */
-    color: #c42c2c; /* A subtle dark gray for elegance */
+    color: #a8669c; /* A subtle dark gray for elegance */
     font-weight: bold; /* Make the text bold */
     margin-left: 10px; /* Add space between the logo and the name */
     text-transform: uppercase; /* Optional: Make all letters uppercase */
@@ -65,6 +75,7 @@ body {
 }
 
 .custom-search-btn {
+  display: flex;
   color: white;
   background-color: #007bff;
   border-color: #007bff;
@@ -84,15 +95,15 @@ body {
 }
 
 #about {
-  margin-top: 40px; /* Adjusted margin for About section */
+  margin-top: 10px; /* Adjusted margin for About section */
 }
 
 #services {
-  margin-top: 40px; /* Adjusted margin for Services section */
+  margin-top: 10px; /* Adjusted margin for Services section */
 }
 
 #contact {
-  margin-top: 40px; /* Adjusted margin for Contact section */
+  margin-top: 10px; /* Adjusted margin for Contact section */
 }
 
 /* General Button Styling */

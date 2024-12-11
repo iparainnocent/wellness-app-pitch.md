@@ -16,9 +16,9 @@ function Header({ activeSection, setActiveSection }) {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
@@ -34,7 +34,7 @@ function Header({ activeSection, setActiveSection }) {
 
 
         />
-          <span className =" Haven Wellness Center">Haven wellness center</span>
+           <h1 className =" app-name">Haven wellness center</h1>
             </a>
 
         {/* Toggle button for small screens */}
