@@ -28,12 +28,13 @@ function Header({ activeSection, setActiveSection }) {
         {/*Display the logo */}
         <a className="navbar-brand" href="#">
          <img
-         //   src ={c:\Users\DELL\Desktop\wellness-center-logo-design-concept-spa-vector-33952332.jpg}
-           // alt= "app Logo"
-         //   style= {{height: "40px", width:'auto'}}
+                 src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
+                 alt="Wellness Center Logo"
+                 className="logo"
+
 
         />
-            Haven Wellness Center
+          <span className =" Haven Wellness Center">Haven wellness center</span>
             </a>
 
         {/* Toggle button for small screens */}
