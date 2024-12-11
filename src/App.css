@@ -1,13 +1,111 @@
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
 }
+.logo {
+  width :200px; /* Adjust the size as needed */
+  height:auto;
+  margin-right: 20px;
+  border-radius: 5px; /* Optional, for rounded corners */
+  
+  @media (max_with:768px){
+    .logo{
+      width :80 px;
+    }
+    }
+  }
+  .custom-name {
+    font-family: 'Poppins', sans-serif; /* A clean and modern font */
+    font-size: 2rem; /* Adjust the size to your preference */
+    color: #c42c2c; /* A subtle dark gray for elegance */
+    font-weight: bold; /* Make the text bold */
+    margin-left: 10px; /* Add space between the logo and the name */
+    text-transform: uppercase; /* Optional: Make all letters uppercase */
+    letter-spacing: 1px; /* Optional: Add spacing between letters */
+  }
+  
+
 /* Header Styling */
-.header {
-  background-color: #ff5722; /* Vibrant orange for energy */
-  color: white;
+.custom-navbar {
+  background-color: #956aa9; /* Header background color */
+  color: rgb(214, 197, 214); /* Text color */
   padding: 20px;
-  text-align: center;
 }
+
+.custom-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(214, 197, 214); /* Text color for the brand */
+}
+
+.custom-nav .nav-item .custom-link {
+  color: rgb(214, 197, 214); /* Text color for nav items */
+  margin-right: 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.custom-nav .nav-item .custom-link:hover {
+  color: #3f6286; /* Hover color */
+  text-decoration: none;
+}
+
+/* Search Form */
+.custom-search-form {
+  margin-left: auto;
+}
+
+.custom-search-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.custom-search-btn {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.custom-search-btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Section Styles */
+#about, #services, #contact {
+  background-color: #8ea9b4; /* Section background color */
+  padding: 40px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+#about {
+  margin-top: 40px; /* Adjusted margin for About section */
+}
+
+#services {
+  margin-top: 40px; /* Adjusted margin for Services section */
+}
+
+#contact {
+  margin-top: 40px; /* Adjusted margin for Contact section */
+}
+
+/* General Button Styling */
+.btn-primary {
+  background-color: #956aa9;
+  border-color: #956aa9;
+}
+
+.btn-primary:hover {
+  background-color: #7f5493;
+  border-color: #7f5493;
+}
+
 
 
 /* Hero Section Styling */
@@ -18,7 +116,6 @@ body {
   text-align: center;
   font-family: Arial, sans-serif;
 }
-
 
 
 .card {
