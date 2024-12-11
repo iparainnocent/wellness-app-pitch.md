@@ -6,28 +6,29 @@ html {
 body {
   font-family: Arial, sans-serif;
 }
+
 .logo {
-  width :200px; /* Adjust the size as needed */
-  height:auto;
+  width: 200px; /* Adjust the size as needed */
+  height: auto;
   margin-right: 20px;
   border-radius: 5px; /* Optional, for rounded corners */
-  
-  @media (max_with:768px){
-    .logo{
-      width :80 px;
-    }
-    }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 80px;
   }
-  .custom-name {
-    font-family: 'Poppins', sans-serif; /* A clean and modern font */
-    font-size: 2rem; /* Adjust the size to your preference */
-    color: #c42c2c; /* A subtle dark gray for elegance */
-    font-weight: bold; /* Make the text bold */
-    margin-left: 10px; /* Add space between the logo and the name */
-    text-transform: uppercase; /* Optional: Make all letters uppercase */
-    letter-spacing: 1px; /* Optional: Add spacing between letters */
-  }
-  
+}
+
+.app-name {
+  font-family: 'Poppins', sans-serif; /* A clean and modern font */
+  font-size: 2rem; /* Adjust the size to your preference */
+  color: #b88f8f; /* A subtle dark gray for elegance */
+  font-weight: bold; /* Make the text bold */
+  margin-left: 10px; /* Add space between the logo and the name */
+  text-transform: uppercase; /* Optional: Make all letters uppercase */
+  letter-spacing: 1px; /* Optional: Add spacing between letters */
+}
 
 /* Header Styling */
 .custom-navbar {
@@ -106,8 +107,6 @@ body {
   border-color: #7f5493;
 }
 
-
-
 /* Hero Section Styling */
 .hero {
   background-color: #009688; /* Teal for calm and balance */
@@ -117,11 +116,34 @@ body {
   font-family: Arial, sans-serif;
 }
 
-
 .card {
   margin-bottom: 20px;
 }
 
 footer a {
   text-decoration: none;
+}
+
+/* New CSS for Login Modal */
+.login-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Ensure it is above other content */
+}
+
+.login-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 400px; /* You can adjust the width */
+  max-width: 90%; /* Make it responsive */
+  box-sizing: border-box;
 }

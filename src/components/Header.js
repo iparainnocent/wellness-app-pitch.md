@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 function Header({ activeSection, setActiveSection }) {
   const containerRef = useRef();
+  const [showLogin, setShowLogin] = useState(false); // State to manage login form visibility
 
   // Handle click to toggle sections
   const handleSectionToggle = (section) => {
@@ -15,6 +16,11 @@ function Header({ activeSection, setActiveSection }) {
     }
   };
 
+  // Handle login form toggle
+  const toggleLoginForm = () => {
+    setShowLogin(!showLogin);
+  };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -25,17 +31,17 @@ function Header({ activeSection, setActiveSection }) {
   return (
     <header ref={containerRef} className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        {/*Display the logo */}
+        {/* Display the logo */}
         <a className="navbar-brand" href="#">
-         <img
-                 src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
-                 alt="Wellness Center Logo"
-                 className="logo"
-
-
-        />
-          <span className =" Haven Wellness Center">Haven wellness center</span>
-            </a>
+          <img
+           
+    src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
+    alt="Wellness Center Logo"
+    className="logo"
+  />
+  <h1 className="app-name">Haven Wellness Center</h1>
+ 
+        </a>
 
         {/* Toggle button for small screens */}
         <button
@@ -72,18 +78,51 @@ function Header({ activeSection, setActiveSection }) {
 
           {/* Search form */}
           <form className="d-flex">
-            <input 
-              className="form-control me-2" 
-              type="search" 
-              placeholder="Search" 
-              aria-label="Search" 
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
             />
             <button className="btn btn-outline-success" type="submit">
               Search
             </button>
           </form>
+
+          {/* Login Button */}
+          <button className="btn btn-outline-primary ms-2" onClick={toggleLoginForm}>
+            Login
+          </button>
         </div>
       </div>
+
+      {/* Conditional rendering of the login form */}
+      {showLogin && (
+        <div className="login-form-overlay">
+          <div className="login-form">
+            <form>
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">
+                  Email address
+                </label>
+                <input type="email" className="form-control" id="email" placeholder="Enter email" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
+                <input type="password" className="form-control" id="password" placeholder="Enter password" />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+              <button type="button" className="btn btn-secondary ms-2" onClick={toggleLoginForm}>
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
