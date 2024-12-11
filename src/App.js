@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import ServiceCard from './components/ServiceCard';
+import ServiceSection from './components/ServiceSection';
 import Footer from './components/Footer';
 import './App.css';
-import ServiceSection from "./components/ServiceSection";
 
 function App() {
+  // State for active sections (e.g., About, Services, Contact)
   const [activeSection, setActiveSection] = useState(null);
+
+  // State for toggling the ServiceSection visibility
+  const [showServices, setShowServices] = useState(false);
+
+  // Handler for "Explore Services" button
+  const handleExploreServices = () => {
+    setShowServices(true); // Show ServiceSection
+  };
 
   return (
     <div>
-      {/* Pass the section toggle handler to Header */}
+      {/* Pass activeSection state and its updater to Header */}
       <Header activeSection={activeSection} setActiveSection={setActiveSection} />
 
-      {/* Conditional Rendering for sections */}
+      {/* Conditional Rendering for About Section */}
       {activeSection === 'about' && (
         <section id="about" className="container py-5">
           <h2>About Us</h2>
@@ -27,6 +35,7 @@ function App() {
         </section>
       )}
 
+      {/* Conditional Rendering for Services Section */}
       {activeSection === 'services' && (
         <section id="services" className="container py-5">
           <h2>Our Services</h2>
@@ -40,6 +49,7 @@ function App() {
         </section>
       )}
 
+      {/* Conditional Rendering for Contact Section */}
       {activeSection === 'contact' && (
         <section id="contact" className="container py-5">
           <h2>Contact Us</h2>
@@ -53,15 +63,13 @@ function App() {
         </section>
       )}
 
-      <HeroSection />
-      <ServiceSection />
-      <div className="container my-5">
-        <div className="row">
-          <ServiceCard title="Yoga" description="Relax and rejuvenate with our yoga classes." image="/assets/yoga.jpg" />
-          <ServiceCard title="Massage" description="Experience relaxation with our massage services." image="/assets/massage.jpg" />
-          <ServiceCard title="Therapy" description="Find peace with our therapy sessions." image="/assets/therapy.jpg" />
-        </div>
-      </div>
+      {/* Hero Section */}
+      <HeroSection onExploreServices={handleExploreServices} />
+
+      {/* Show ServiceSection conditionally */}
+      {showServices && <ServiceSection />}
+
+      {/* Footer */}
       <Footer />
     </div>
   );
@@ -69,6 +77,6 @@ function App() {
 
 export default App;
 
-  
 
- 
+
+

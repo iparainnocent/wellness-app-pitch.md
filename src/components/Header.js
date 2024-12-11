@@ -12,9 +12,17 @@ function Header({ activeSection, setActiveSection }) {
   // Close sections when clicking outside
   const handleClickOutside = (event) => {
     if (containerRef.current && !containerRef.current.contains(event.target)) {
-      setActiveSection(null);
+      setShowLogin(false); // Only close the login form or any other relevant UI
     }
   };
+
+
+
+ // const handleClickOutside = (event) => {
+ //   if (containerRef.current && !containerRef.current.contains(event.target)) {
+  //    setActiveSection(null);
+  //  }
+  //};
 
   // Handle login form toggle
   const toggleLoginForm = () => {
