@@ -55,27 +55,6 @@ body {
   text-decoration: none;
 }
 
-/* Search Form */
-.custom-search-form {
-  margin-left: auto;
-}
-
-.custom-search-input {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.custom-search-btn {
-  color: white;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.custom-search-btn:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
 /* Section Styles */
 #about, #services, #contact {
   background-color: #8ea9b4; /* Section background color */
@@ -146,4 +125,169 @@ footer a {
   width: 400px; /* You can adjust the width */
   max-width: 90%; /* Make it responsive */
   box-sizing: border-box;
+}
+
+/* Sign Up Form Styles */
+.signup-container {
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.signup-container h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-input {
+  margin: 10px 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.signup-button {
+  background-color: #956aa9;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.signup-button:hover {
+  background-color: #7f5493;
+}
+
+.signup-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.signup-success {
+  color: green;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Review Component Styling */
+
+/* Container for the review component */
+.review-container {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.review-form input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.review-form button {
+  padding: 12px;
+  background-color: #956aa9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.review-form button:hover {
+  background-color: #7f5493;
+}
+
+.review-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.review-list li {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-list button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.review-list button:hover {
+  background-color: #c82333;
+}
+
+.review-list button.edit-btn {
+  background-color: #ffc107;
+}
+
+.review-list button.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .review-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .review-form input[type="text"] {
+    font-size: 0.875rem;
+  }
+
+  .review-form button {
+    font-size: 0.875rem;
+  }
 }

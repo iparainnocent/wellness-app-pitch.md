@@ -12,6 +12,7 @@ const ServiceSection = () => (
           service={service.service}
           description={service.description}
           image={service.image}
+          link={`/${service.service.toLowerCase()}`} // Set the link dynamically based on the service
         />
       ))}
     </div>
@@ -19,5 +20,3 @@ const ServiceSection = () => (
 );
 
 export default ServiceSection;
-
-
