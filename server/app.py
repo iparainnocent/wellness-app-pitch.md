@@ -99,5 +99,40 @@ class DeleteReview(Resource):
             return {"message": str(e)}, 500
 
 api.add_resource(DeleteReview, '/reviews/<int:review_id>')  
+
+class Users(Resource):
+    def get(self):
+        response_dict_list = [user.to_dict() for user in User.query.all()]
+        return response_dict_list, 200  
+    
+api.add_resource(Users, '/users')
+
+class PostUsers(Resource):
+    def post(self):
+        data = request.get_json()
+
+        if not all(field in data for field in ["name", "contact", "email"]):
+            return {"message": "Missing required fields: name, contact, email"}, 400
+        
+        existing_user = User.query.filter((User.contact == data["contact"]) | (User.email == data["email"])).first()
+        if existing_user:
+            return {"message": "User with this contact or email already exists."}, 400
+        
+        new_user = User(
+            name=data["name"],
+            contact=data["contact"],
+            email=data["email"]
+        )
+
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+            return {"message": "User created successfully", "user": new_user.to_dict()}, 201
+        except Exception as e:
+            db.session.rollback()
+            return {"message": str(e)}, 500
+    
+api.add_resource(PostUsers, '/users')
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
