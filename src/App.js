@@ -61,6 +61,19 @@ function App() {
             </div>
           </section>
         )}
+    {/* Conditional Rendering for Contact Section */}
+    {activeSection === 'contact' && (
+        <section id="contact" className="container py-5">
+          <h2>Contact Us</h2>
+          <p>Ready to begin your wellness journey? Reach out to us today!</p>
+          <ul>
+            <li><strong>Email:</strong> contact@havenwellness.com</li>
+            <li><strong>Phone:</strong> (254) 456-7890</li>
+            <li><strong>Address:</strong> 123 Wellness Lane, Health City</li>
+          </ul>
+          <p>We look forward to welcoming you to Haven Wellness Center.</p>
+        </section>
+      )}
 
         {/* Hero Section */}
         <HeroSection onExploreServices={handleExploreServices} />
@@ -76,6 +89,7 @@ function App() {
         </Routes>
 
         {/* Review Component */}
+
         <section id="reviews" className="container py-5">
           <h2>User Reviews</h2>
           <ReviewComponent />
