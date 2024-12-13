@@ -137,12 +137,16 @@ const Footer = () => {
           <Modal.Title>Contact Us</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h6>Get in Touch</h6>
-          <p>If you have any questions, feel free to reach out to us at:</p>
+          <h6>Ready to begin your wellness journey? Reach out to us today!</h6>
           <p>
             Email:{" "}
-            <a href="mailto:freaks@moringa.sdf.com">freaks@moringa.sdf.com</a>
+            <a href="mailto:contact@havenwellness.com">
+              contact@havenwellness.com
+            </a>
           </p>
+          <p>Phone: (254) 456-7890</p>
+          <p>Address: 123 Wellness Lane, Health City</p>
+          <p>We look forward to welcoming you to Haven Wellness Center.</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseContact}>
