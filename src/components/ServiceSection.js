@@ -1,6 +1,6 @@
-import React from "react";
-import ServiceCard from "./ServiceCard";
-import serviceData from "../data/services.json"; // Assuming JSON file is stored in `src/data`
+import React from 'react';
+import ServiceCard from './ServiceCard';
+import serviceData from '../data/services.json'; // JSON file with service data
 
 const ServiceSection = () => (
   <div className="container my-5">
@@ -12,6 +12,7 @@ const ServiceSection = () => (
           service={service.service}
           description={service.description}
           image={service.image}
+          link={`/${service.service.toLowerCase()}`} // Set the link dynamically based on the service
         />
       ))}
     </div>
