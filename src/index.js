@@ -5,13 +5,14 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
-document.addEventListener("DOMContentLoaded",function (){
-  var tooltipTriggerList =[].slice.call(document.querySelectorAll(['data-bs-toggle="tooltip']));
-  tooltipTriggerList.forEach(function(tooltipTriggerEl){
+// Corrected DOMContentLoaded Listener
+document.addEventListener("DOMContentLoaded", function () {
+  // Ensure the tooltips are correctly initialized
+  const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach((tooltipTriggerEl) => {
     new bootstrap.Tooltip(tooltipTriggerEl);
   });
 });
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,3 +20,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+

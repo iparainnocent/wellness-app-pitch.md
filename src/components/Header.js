@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-function Header({ activeSection, setActiveSection }) {
+function Header({ activeSection, setActiveSection, setSearchQuery }) {
   const containerRef = useRef();
   const [showLogin, setShowLogin] = useState(false); // State to manage login form visibility
 
@@ -12,17 +12,9 @@ function Header({ activeSection, setActiveSection }) {
   // Close sections when clicking outside
   const handleClickOutside = (event) => {
     if (containerRef.current && !containerRef.current.contains(event.target)) {
-      setShowLogin(false); // Only close the login form or any other relevant UI
+      setShowLogin(false); // Close login form if clicking outside
     }
   };
-
-
-
- // const handleClickOutside = (event) => {
- //   if (containerRef.current && !containerRef.current.contains(event.target)) {
-  //    setActiveSection(null);
-  //  }
-  //};
 
   // Handle login form toggle
   const toggleLoginForm = () => {
@@ -36,19 +28,23 @@ function Header({ activeSection, setActiveSection }) {
     };
   }, []);
 
+  // Handle search input change
+  const handleSearchChange = (event) => {
+    const query = event.target.value; // Retrieve input value
+    setSearchQuery(query); // Pass the search query to the parent component
+  };
+
   return (
     <header ref={containerRef} className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         {/* Display the logo */}
         <a className="navbar-brand" href="#">
           <img
-           
-    src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
-    alt="Wellness Center Logo"
-    className="logo"
-  />
-  <h1 className="app-name">Haven Wellness Center</h1>
- 
+            src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
+            alt="Wellness Center Logo"
+            className="logo"
+          />
+          <h1 className="app-name">Haven Wellness Center</h1>
         </a>
 
         {/* Toggle button for small screens */}
@@ -85,16 +81,14 @@ function Header({ activeSection, setActiveSection }) {
           </ul>
 
           {/* Search form */}
-          <form className="d-flex">
+          <form className="d-flex me-3">
             <input
-              className="form-control me-2"
+              className="form-control"
               type="search"
-              placeholder="Search"
-              aria-label="Search"
+              placeholder="Search services..."
+              aria-label="Search services"
+              onChange={handleSearchChange} // Attach the handler
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
           </form>
 
           {/* Login Button */}
@@ -136,3 +130,6 @@ function Header({ activeSection, setActiveSection }) {
 }
 
 export default Header;
+
+
+
