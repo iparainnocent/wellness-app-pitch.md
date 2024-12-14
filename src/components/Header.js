@@ -89,6 +89,10 @@ function Header({ activeSection, setActiveSection, setSearchQuery }) {
               aria-label="Search services"
               onChange={handleSearchChange} // Attach the handler
             />
+         
+            <button className="btn btn-outline-success" type="submit">
+              Search
+            </button>
           </form>
 
           {/* Login Button */}

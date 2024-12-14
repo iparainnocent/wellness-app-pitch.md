@@ -101,7 +101,6 @@ class DeleteReview(Resource):
 
 api.add_resource(DeleteReview, '/reviews/<int:review_id>')  
 
-<<<<<<< HEAD
 # Service Resource
 class Services(Resource):
     def get(self):
@@ -162,41 +161,10 @@ class UpdateService(Resource):
         try:
             db.session.commit()
             return {"message": "Service updated successfully", "service": service.to_dict()}, 200
-=======
-class Users(Resource):
-    def get(self):
-        response_dict_list = [user.to_dict() for user in User.query.all()]
-        return response_dict_list, 200  
-    
-api.add_resource(Users, '/users')
-
-class PostUsers(Resource):
-    def post(self):
-        data = request.get_json()
-
-        if not all(field in data for field in ["name", "contact", "email"]):
-            return {"message": "Missing required fields: name, contact, email"}, 400
-        
-        existing_user = User.query.filter((User.contact == data["contact"]) | (User.email == data["email"])).first()
-        if existing_user:
-            return {"message": "User with this contact or email already exists."}, 400
-        
-        new_user = User(
-            name=data["name"],
-            contact=data["contact"],
-            email=data["email"]
-        )
-
-        try:
-            db.session.add(new_user)
-            db.session.commit()
-            return {"message": "User created successfully", "user": new_user.to_dict()}, 201
->>>>>>> origin/main
         except Exception as e:
             db.session.rollback()
             return {"message": str(e)}, 500
     
-<<<<<<< HEAD
 api.add_resource(UpdateService, '/services/<int:service_id>')  
 
 class DeleteService(Resource):
@@ -215,9 +183,6 @@ class DeleteService(Resource):
             return {"message": str(e)}, 500
 
 api.add_resource(DeleteService, '/services/<int:service_id>')  
-=======
-api.add_resource(PostUsers, '/users')
->>>>>>> origin/main
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
