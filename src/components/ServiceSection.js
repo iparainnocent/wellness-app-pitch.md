@@ -1,22 +1,32 @@
 import React from 'react';
 import ServiceCard from './ServiceCard';
-import serviceData from '../data/services.json'; // JSON file with service data
 
-const ServiceSection = () => (
-  <div className="container my-5">
-    <h2 className="text-center mb-4">Our Services</h2>
-    <div className="row">
-      {serviceData.map((service, index) => (
-        <ServiceCard
-          key={index}
-          service={service.service}
-          description={service.description}
-          image={service.image}
-          link={`/${service.service.toLowerCase()}`} // Set the link dynamically based on the service
-        />
-      ))}
+const ServiceSection = ({ filteredServices }) => {
+  return (
+    <div className="container my-5">
+      <h2 className="text-center mb-4">Our Services</h2>
+      <div className="row">
+        {filteredServices.length > 0 ? (
+          filteredServices.map((service, index) => (
+            <ServiceCard
+              key={index}
+              service={service.service}
+              description={service.description}
+              image={service.image}
+              link={`/${service.service.toLowerCase()}`} // Dynamic link for individual service
+            />
+          ))
+        ) : (
+          <p className="text-center">No services found matching your search.</p>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ServiceSection;
+
+
+
+
+
