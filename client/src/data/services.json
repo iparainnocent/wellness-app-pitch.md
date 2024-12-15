@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Yoga Classes",
+    "description": "Relaxing yoga sessions",
+    "price": 20.0,
+    "image": "/images/yoga.jpg"
+  },
+  {
+    "name": "Deep Tissue Massage",
+    "description": "Intensive massage therapy",
+    "price": 50.0,
+    "image": "/images/deep_tissue_massage.jpg"
+  },
+  {
+    "name": "Therapeutic Massage",
+    "description": "Massage for stress relief",
+    "price": 45.0,
+    "image": "/images/therapeutic_massage.jpg"
+  },
+  {
+    "name": "Yoga Therapy",
+    "description": "Customized yoga therapy",
+    "price": 30.0,
+    "image": "/images/yoga_therapy.jpg"
+  },
+  {
+    "name": "Sports Massage",
+    "description": "Massage for athletes",
+    "price": 40.0,
+    "image": "/images/sports_massage.jpg"
+  }
+]
+
+
+
+
+
+
+

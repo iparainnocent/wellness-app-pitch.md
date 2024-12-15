@@ -1,0 +1,293 @@
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  width: 200px; /* Adjust the size as needed */
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px; /* Optional, for rounded corners */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 80px;
+  }
+}
+
+.app-name {
+  font-family: 'Poppins', sans-serif; /* A clean and modern font */
+  font-size: 2rem; /* Adjust the size to your preference */
+  color: #b88f8f; /* A subtle dark gray for elegance */
+  font-weight: bold; /* Make the text bold */
+  margin-left: 10px; /* Add space between the logo and the name */
+  text-transform: uppercase; /* Optional: Make all letters uppercase */
+  letter-spacing: 1px; /* Optional: Add spacing between letters */
+}
+
+/* Header Styling */
+.custom-navbar {
+  background-color: #956aa9; /* Header background color */
+  color: rgb(214, 197, 214); /* Text color */
+  padding: 20px;
+}
+
+.custom-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(214, 197, 214); /* Text color for the brand */
+}
+
+.custom-nav .nav-item .custom-link {
+  color: rgb(214, 197, 214); /* Text color for nav items */
+  margin-right: 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.custom-nav .nav-item .custom-link:hover {
+  color: #3f6286; /* Hover color */
+  text-decoration: none;
+}
+
+/* Section Styles */
+#about, #services, #contact {
+  background-color: #8ea9b4; /* Section background color */
+  padding: 40px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+#about {
+  margin-top: 40px; /* Adjusted margin for About section */
+}
+
+#services {
+  margin-top: 40px; /* Adjusted margin for Services section */
+}
+
+#contact {
+  margin-top: 40px; /* Adjusted margin for Contact section */
+}
+
+/* General Button Styling */
+.btn-primary {
+  background-color: #956aa9;
+  border-color: #956aa9;
+}
+
+.btn-primary:hover {
+  background-color: #7f5493;
+  border-color: #7f5493;
+}
+
+/* Hero Section Styling */
+.hero {
+  background-color: #009688; /* Teal for calm and balance */
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+/* New CSS for Login Modal */
+.login-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Ensure it is above other content */
+}
+
+.login-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 400px; /* You can adjust the width */
+  max-width: 90%; /* Make it responsive */
+  box-sizing: border-box;
+}
+
+/* Sign Up Form Styles */
+.signup-container {
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.signup-container h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-input {
+  margin: 10px 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.signup-button {
+  background-color: #956aa9;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.signup-button:hover {
+  background-color: #7f5493;
+}
+
+.signup-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.signup-success {
+  color: green;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Review Component Styling */
+
+/* Container for the review component */
+.review-container {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.review-form input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.review-form button {
+  padding: 12px;
+  background-color: #956aa9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.review-form button:hover {
+  background-color: #7f5493;
+}
+
+.review-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.review-list li {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-list button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.review-list button:hover {
+  background-color: #c82333;
+}
+
+.review-list button.edit-btn {
+  background-color: #ffc107;
+}
+
+.review-list button.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .review-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .review-form input[type="text"] {
+    font-size: 0.875rem;
+  }
+
+  .review-form button {
+    font-size: 0.875rem;
+  }
+}
