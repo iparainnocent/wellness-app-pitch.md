@@ -44,6 +44,7 @@ const SignUp = ({ onSignUpSuccess }) => {
       }
     }
   });
+  
 
   return (
     <div className="signup-container">
