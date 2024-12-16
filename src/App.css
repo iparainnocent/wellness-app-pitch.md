@@ -264,11 +264,11 @@ footer a {
 }
 
 .review-list button:hover {
-  background-color: #c82333;
+  background-color: #745e61;
 }
 
 .review-list button.edit-btn {
-  background-color: #ffc107;
+  background-color: #d9ca9f;
 }
 
 .review-list button.edit-btn:hover {
