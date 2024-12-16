@@ -5,14 +5,60 @@ html {
 
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Section */
+header {
+  display: flex;
+  align-items: flex-start; /* Center content vertically */
+  justify-content: space-between; /* Space between logo and name */
+  background-color: #697a8b; /* Light background */
+  padding: 20px; /* Horizontal padding */
+  height: 100px; /* Fixed height for the header */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  overflow: hidden; /* Ensure elements don't overflow */
+}
+
+/* Logo Section */
+.logo-container {
+  display: flex;
+
+
+  align-items: center; /* Center the logo vertically */
+  margin-top: 10px;
+  height: 100%; /* Match the height of the header */
 }
 
 .logo {
-  width: 200px; /* Adjust the size as needed */
-  height: auto;
-  margin-right: 20px;
-  border-radius: 5px; /* Optional, for rounded corners */
+  height: 80%; /* Make the logo occupy 80% of the header height */
+  width: 100px; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image fits within its bounds */
 }
+
+/* App Name Section */
+.app-name-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left:20px; /* Align text to the left */
+  height: 100%;
+  padding: 0;
+  margin:0;
+}
+
+.app-name {
+  font-family: 'Poppins', sans-serif; /* Clean and modern font */
+  font-size: 2rem; /* Adjust size as needed */
+  color: #b88f8f; /* Subtle color */
+  font-weight: bold;
+  margin-bottom: 13%; /* Remove extra margins */
+  text-transform: uppercase; /* Optional */
+  letter-spacing: 1px; /* Optional */
+  
+  }
+
 
 @media (max-width: 768px) {
   .logo {
@@ -20,22 +66,13 @@ body {
   }
 }
 
-.app-name {
-  font-family: 'Poppins', sans-serif; /* A clean and modern font */
-  font-size: 2rem; /* Adjust the size to your preference */
-  color: #b88f8f; /* A subtle dark gray for elegance */
-  font-weight: bold; /* Make the text bold */
-  margin-left: 10px; /* Add space between the logo and the name */
-  text-transform: uppercase; /* Optional: Make all letters uppercase */
-  letter-spacing: 1px; /* Optional: Add spacing between letters */
-}
 
 /* Header Styling */
 .custom-navbar {
   background-color: #956aa9; /* Header background color */
   color: rgb(214, 197, 214); /* Text color */
   padding: 20px;
-}
+  }
 
 .custom-brand {
   font-size: 1.5rem;
@@ -54,17 +91,25 @@ body {
   color: #3f6286; /* Hover color */
   text-decoration: none;
 }
+.actions-container {
+  display: flex;
+  align-items: flex-end; /* Align items to the bottom of the container */
+  gap: 20px; /* Add space between navigation, search, and login button */
+  margin-left: auto; /* Push it to the right */
+  height: 100%;
+  margin-top:3%;
+}
 
 /* Section Styles */
 #about, #services, #contact {
   background-color: #8ea9b4; /* Section background color */
   padding: 40px;
   border-radius: 8px;
-  margin-top: 20px;
+  margin-top: 200;
 }
 
 #about {
-  margin-top: 40px; /* Adjusted margin for About section */
+  margin-bottom: 20px; /* Adjusted margin for About section */
 }
 
 #services {
