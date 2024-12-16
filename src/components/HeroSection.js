@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignUp from './SignUp'; // Import SignUp component
+import SignUp from './SignUp'; 
 
 function HeroSection({ onExploreServices }) {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -22,7 +22,7 @@ function HeroSection({ onExploreServices }) {
         <div>
           <button className="btn btn-primary m-2" onClick={onExploreServices}>Explore Services</button>
           <button className="btn btn-secondary m-2" onClick={handleJoinClick}>
-            {showSignUp ? 'Close' : 'Join Us'} {/* Change button text */}
+            {showSignUp ? 'Close' : 'Join Us'} 
           </button>
         </div>
 

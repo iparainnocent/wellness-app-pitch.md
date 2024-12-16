@@ -1,73 +1,146 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
 const LoginForm = ({ onClose }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(''); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const validateForm = () => {
-    setError('');
-
-    // Validate email format
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!email || !emailRegex.test(email)) {
-      return 'Please enter a valid email address.';
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setIsLoggedIn(true);
+      setUserData(JSON.parse(storedUser));
     }
+  }, []);
 
-    // Validate password length (min 8 characters) and must include a number
-    const passwordRegex = /^(?=.*\d).{8,}$/; 
-    if (!password || !passwordRegex.test(password)) {
-      return 'Password must be at least 8 characters long and contain at least one number.';
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
+      password: Yup.string()
+        .min(8, 'Password must be at least 8 characters')
+        .matches(/\d/, 'Password must contain at least one number')
+        .required('Password is required'),
+    }),
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post('http://localhost:5555/login', values, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = response.data;
+        if (response.status === 200) {
+          console.log('Login successful:', data);
+          localStorage.setItem('user', JSON.stringify(data));
+          setIsLoggedIn(true);
+          setUserData(data);
+          setSuccessMessage('Successfully logged in');
+
+          // Delay closing the form
+          setTimeout(() => {
+            onClose(data); // Close the login form after a delay
+          }, 2000); 
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+
+        // Check if error response exists and handle specific errors
+        if (error.response) {
+          if (error.response.status === 401) { 
+            formik.setErrors({ general: 'Incorrect password' });
+          } else if (error.response.status === 404) { 
+            formik.setErrors({ general: 'Invalid email address' });
+          } else {
+            formik.setErrors({ general: 'An error occurred. Please try again later.' });
+          }
+        } else {
+          formik.setErrors({ general: 'An error occurred. Please try again later.' });
+        }
+      }
+    },
+  });
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.delete('http://localhost:5555/logout');
+      if (response.status === 200) {
+        console.log('Logout successful');
+        localStorage.removeItem('user');
+        setIsLoggedIn(false);
+        setUserData(null);
+        setSuccessMessage('');
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
     }
-
-    return null; 
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Run form validation
-    const validationError = validateForm();
-    if (validationError) {
-      setError(validationError); // Set error if validation fails
-      return; // Prevent form submission
-    }
-
-    // Handle login logic here (e.g., send data to the server)
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    onClose();
   };
 
   return (
     <div className="login-form">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+      {!isLoggedIn ? (
+        <form onSubmit={formik.handleSubmit}>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              required
+            />
+            {formik.touched.email && formik.errors.email && (
+              <div style={{ color: 'red' }}>{formik.errors.email}</div>
+            )}
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              required
+            />
+            {formik.touched.password && formik.errors.password && (
+              <div style={{ color: 'red' }}>{formik.errors.password}</div>
+            )}
+          </div>
 
-        {/* Show error message if validation fails */}
-        {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
+          {/* Displays any general error message */}
+          {formik.errors.general && <div style={{ color: 'red', marginTop: '10px' }}>{formik.errors.general}</div>}
 
-        <button type="submit">Login</button>
-      </form>
-      <button onClick={onClose}>Close</button>
+          <button type="submit">Login</button>
+        </form>
+      ) : (
+        <div>
+          <h2>Welcome, {userData.name}</h2>
+          {successMessage && <div style={{ color: 'green' }}>{successMessage}</div>} {/* Display success message */}
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      )}
+
+      <button
+        onClick={() => {
+          onClose();
+          setSuccessMessage('');
+        }}
+      >
+        Close
+      </button>
     </div>
   );
 };

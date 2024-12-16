@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'; // Import Link for navigation
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'; 
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import ServiceSection from './components/ServiceSection';
 import Footer from './components/Footer';
-import Yoga from './components/Yoga'; // Import Yoga component
-import Massage from './components/Massage'; // Import Massage component
-import Therapy from './components/Therapy'; // Import Therapy component
+import Yoga from './components/Yoga';
+import Massage from './components/Massage'; 
+import Therapy from './components/Therapy'; 
 import ReviewComponent from './components/Review';
 import './App.css';
 
@@ -26,7 +26,6 @@ function App() {
   return (
     <Router>
       <div>
-        {/* Pass activeSection state and its updater to Header */}
         <Header activeSection={activeSection} setActiveSection={setActiveSection} />
 
         {/* Conditional Rendering for About Section */}
@@ -54,35 +53,36 @@ function App() {
               <li><strong>Personalized Wellness Plans:</strong> Tailored programs to meet your unique goals.</li>
             </ul>
 
-            {/* Use Links for navigation instead of <a> tags */}
+            
             <div>
-              <Link to="/yoga" className="btn btn-primary m-2">Yoga</Link>
-              <Link to="/massage" className="btn btn-primary m-2">Massage</Link>
-              <Link to="/therapy" className="btn btn-primary m-2">Therapy</Link>
+              <Link to="/Yoga" className="btn btn-primary m-2">Yoga</Link>
+              <Link to="/Massage" className="btn btn-primary m-2">Massage</Link>
+              <Link to="/Therapy" className="btn btn-primary m-2">Therapy</Link>
             </div>
           </section>
         )}
-    {/* Conditional Rendering for Contact Section */}
-    {activeSection === 'contact' && (
-        <section id="contact" className="container py-5">
-          <h2>Contact Us</h2>
-          <p>Ready to begin your wellness journey? Reach out to us today!</p>
-          <ul>
-            <li><strong>Email:</strong> contact@havenwellness.com</li>
-            <li><strong>Phone:</strong> (254) 456-7890</li>
-            <li><strong>Address:</strong> 123 Wellness Lane, Health City</li>
-          </ul>
-          <p>We look forward to welcoming you to Haven Wellness Center.</p>
-        </section>
-      )}
+
+        {/* Conditional Rendering for Contact Section */}
+        {activeSection === 'contact' && (
+          <section id="contact" className="container py-5">
+            <h2>Contact Us</h2>
+            <p>Ready to begin your wellness journey? Reach out to us today!</p>
+            <ul>
+              <li><strong>Email:</strong> contact@havenwellness.com</li>
+              <li><strong>Phone:</strong> (254) 456-7890</li>
+              <li><strong>Address:</strong> 123 Wellness Lane, Health City</li>
+            </ul>
+            <p>We look forward to welcoming you to Haven Wellness Center.</p>
+          </section>
+        )}
 
         {/* Hero Section */}
         <HeroSection onExploreServices={handleExploreServices} />
 
-        {/* Show ServiceSection conditionally */}
+        {/* Show ServiceSection conditionally (only shown when 'Explore Services' is clicked) */}
         {showServices && <ServiceSection />}
 
-        {/* Define Routes */}
+        {/* Routes for different services */}
         <Routes>
           <Route path="/yoga" element={<Yoga />} />
           <Route path="/massage" element={<Massage />} />
@@ -90,11 +90,13 @@ function App() {
         </Routes>
 
         {/* Review Component */}
+{/* 
+        Review Component
         <section id="reviews" className="container py-5">
           <h2>User Reviews</h2>
           <ReviewComponent />
-        </section>
-        
+        </section> */}
+
         {/* Footer */}
         <Footer />
       </div>
