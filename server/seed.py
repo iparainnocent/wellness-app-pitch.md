@@ -3,16 +3,16 @@ from app import app
 
 # Predefined real data for users, services, and reviews
 user_data = [
-    {"name": "Alice Johnson", "contact": "123-456-7890", "email": "alice@example.com"},
-    {"name": "Bob Smith", "contact": "234-567-8901", "email": "bob@example.com"},
-    {"name": "Catherine Lee", "contact": "345-678-9012", "email": "catherine@example.com"},
-    {"name": "David Brown", "contact": "456-789-0123", "email": "david@example.com"},
-    {"name": "Eva Williams", "contact": "567-890-1234", "email": "eva@example.com"},
-    {"name": "Frank Harris", "contact": "678-901-2345", "email": "frank@example.com"},
-    {"name": "Grace Miller", "contact": "789-012-3456", "email": "grace@example.com"},
-    {"name": "Henry Taylor", "contact": "890-123-4567", "email": "henry@example.com"},
-    {"name": "Irene Martinez", "contact": "901-234-5678", "email": "irene@example.com"},
-    {"name": "John Davis", "contact": "012-345-6789", "email": "john@example.com"}
+    {"name": "Alice Johnson", "contact": "123-456-7890", "email": "alice@example.com", "password": "alice123"},
+    {"name": "Bob Smith", "contact": "234-567-8901", "email": "bob@example.com", "password": "bob123"},
+    {"name": "Catherine Lee", "contact": "345-678-9012", "email": "catherine@example.com", "password": "catherine123"},
+    {"name": "David Brown", "contact": "456-789-0123", "email": "david@example.com", "password": "david123"},
+    {"name": "Eva Williams", "contact": "567-890-1234", "email": "eva@example.com", "password": "eva123"},
+    {"name": "Frank Harris", "contact": "678-901-2345", "email": "frank@example.com", "password": "frank123"},
+    {"name": "Grace Miller", "contact": "789-012-3456", "email": "grace@example.com", "password": "grace123"},
+    {"name": "Henry Taylor", "contact": "890-123-4567", "email": "henry@example.com", "password": "henry123"},
+    {"name": "Irene Martinez", "contact": "901-234-5678", "email": "irene@example.com", "password": "irene123"},
+    {"name": "John Davis", "contact": "012-345-6789", "email": "john@example.com", "password": "john123"}
 ]
 
 service_data = [
@@ -37,19 +37,20 @@ review_data = [
 ]
 
 def generate_user_data():
-    with app.app_context():  
+    with app.app_context():
         for user in user_data:
             user_record = User(
                 name=user["name"],
                 contact=user["contact"],
-                email=user["email"]
+                email=user["email"],
+                password_hash=user["password"]  # This automatically hashes the password
             )
             db.session.add(user_record)
         db.session.commit()
         print(f'{len(user_data)} user records have been successfully added!')
 
 def generate_service_data():
-    with app.app_context():  
+    with app.app_context():
         for service in service_data:
             service_record = Service(
                 name=service["name"]
@@ -59,7 +60,7 @@ def generate_service_data():
         print(f'{len(service_data)} service records have been successfully added!')
 
 def generate_review_data():
-    with app.app_context():  
+    with app.app_context():
         for review in review_data:
             review_record = Review(
                 user_id=review["user_id"],
@@ -73,9 +74,9 @@ def generate_review_data():
 
 # Run the functions to generate data
 def run_seed():
-    generate_user_data()   
-    generate_service_data()  
-    generate_review_data()  
+    generate_user_data()
+    generate_service_data()
+    generate_review_data()
 
 if __name__ == '__main__':
     run_seed()

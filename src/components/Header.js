@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import LoginForm from './Login'; // Import your LoginForm component
 
 function Header({ activeSection, setActiveSection }) {
   const containerRef = useRef();
   const [showLogin, setShowLogin] = useState(false); // State to manage login form visibility
+  const [user, setUser] = useState(null); // To store logged-in user data
 
   // Handle click to toggle sections
   const handleSectionToggle = (section) => {
@@ -12,22 +14,33 @@ function Header({ activeSection, setActiveSection }) {
   // Close sections when clicking outside
   const handleClickOutside = (event) => {
     if (containerRef.current && !containerRef.current.contains(event.target)) {
-      setShowLogin(false); // Only close the login form or any other relevant UI
+      setShowLogin(false); // Close the login form
     }
   };
-
-
-
- // const handleClickOutside = (event) => {
- //   if (containerRef.current && !containerRef.current.contains(event.target)) {
-  //    setActiveSection(null);
-  //  }
-  //};
 
   // Handle login form toggle
   const toggleLoginForm = () => {
     setShowLogin(!showLogin);
   };
+
+  // Handle login success
+  const handleLoginSuccess = (userData) => {
+    setUser(userData); // Store user data in state
+    setShowLogin(false); // Close the login form
+  };
+
+  // Handle logout functionality
+  const handleLogout = () => {
+    setUser(null); // Clear user data from state
+    localStorage.removeItem('user'); // Clear user data from localStorage if necessary
+  };
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+        setUser(JSON.parse(storedUser)); // Set user from local storage if available
+    }
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -42,13 +55,11 @@ function Header({ activeSection, setActiveSection }) {
         {/* Display the logo */}
         <a className="navbar-brand" href="#">
           <img
-           
-    src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
-    alt="Wellness Center Logo"
-    className="logo"
-  />
-  <h1 className="app-name">Haven Wellness Center</h1>
- 
+            src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
+            alt="Wellness Center Logo"
+            className="logo"
+          />
+          <h1 className="app-name">Haven Wellness Center</h1>
         </a>
 
         {/* Toggle button for small screens */}
@@ -97,9 +108,12 @@ function Header({ activeSection, setActiveSection }) {
             </button>
           </form>
 
-          {/* Login Button */}
-          <button className="btn btn-outline-primary ms-2" onClick={toggleLoginForm}>
-            Login
+          {/* Login / Logout Button */}
+          <button
+            className="btn btn-outline-primary ms-2"
+            onClick={user ? handleLogout : toggleLoginForm} // Log out if user is logged in
+          >
+            {user ? 'Logout' : 'Login'} {/* Change to Logout if user is logged in */}
           </button>
         </div>
       </div>
@@ -107,28 +121,7 @@ function Header({ activeSection, setActiveSection }) {
       {/* Conditional rendering of the login form */}
       {showLogin && (
         <div className="login-form-overlay">
-          <div className="login-form">
-            <form>
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">
-                  Email address
-                </label>
-                <input type="email" className="form-control" id="email" placeholder="Enter email" />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="password" className="form-label">
-                  Password
-                </label>
-                <input type="password" className="form-control" id="password" placeholder="Enter password" />
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Login
-              </button>
-              <button type="button" className="btn btn-secondary ms-2" onClick={toggleLoginForm}>
-                Close
-              </button>
-            </form>
-          </div>
+          <LoginForm onClose={handleLoginSuccess} /> {/* Pass the success handler to LoginForm */}
         </div>
       )}
     </header>
