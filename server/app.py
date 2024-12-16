@@ -116,16 +116,13 @@ class PostUsers(Resource):
     def post(self):
         data = request.get_json()
 
-        # Check for required fields including password
         if not all(field in data for field in ["name", "contact", "email", "password"]):
             return {"message": "Missing required fields: name, contact, email, password"}, 400
         
-        # Check if user already exists
         existing_user = User.query.filter((User.contact == data["contact"]) | (User.email == data["email"])).first()
         if existing_user:
             return {"message": "User with this contact or email already exists."}, 400
         
-        # Create a new user with hashed password
         new_user = User(
             name=data["name"],
             contact=data["contact"],
@@ -149,7 +146,6 @@ api.add_resource(PostUsers, '/users')
 class Login(Resource):
 
     def post(self):
-        # Get the email and password from the request
         data = request.get_json()
         email = data.get('email')
         password = data.get('password')
@@ -158,7 +154,7 @@ class Login(Resource):
         user = User.query.filter_by(email=email).first()
 
         if not user:
-            return {'error': 'Invalid email address'}, 404  # User not found
+            return {'error': 'Invalid email address'}, 404 
 
         if user.check_password(password):  # Check if the password matches
             session['user_id'] = user.id

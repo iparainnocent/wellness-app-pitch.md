@@ -1,7 +1,8 @@
-from models import db, User, Service, Review
+from models import db, User, Service, Review, Booking
 from app import app
+import random
+from datetime import datetime, timedelta
 
-# Predefined real data for users, services, and reviews
 user_data = [
     {"name": "Alice Johnson", "contact": "123-456-7890", "email": "alice@example.com", "password": "alice123"},
     {"name": "Bob Smith", "contact": "234-567-8901", "email": "bob@example.com", "password": "bob123"},
@@ -36,6 +37,19 @@ review_data = [
     {"user_id": 10, "service_id": 5, "rating": 5, "comment": "Excellent deep tissue massage, highly recommend!"}
 ]
 
+booking_data = [
+    {"user_id": 1, "service_id": 1, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "confirmed"},
+    {"user_id": 2, "service_id": 2, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "pending"},
+    {"user_id": 3, "service_id": 3, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "confirmed"},
+    {"user_id": 4, "service_id": 4, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "cancelled"},
+    {"user_id": 5, "service_id": 5, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "confirmed"},
+    {"user_id": 6, "service_id": 1, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "pending"},
+    {"user_id": 7, "service_id": 2, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "confirmed"},
+    {"user_id": 8, "service_id": 3, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "cancelled"},
+    {"user_id": 9, "service_id": 4, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "pending"},
+    {"user_id": 10, "service_id": 5, "date": datetime.now() + timedelta(days=random.randint(1, 30)), "status": "confirmed"}
+]
+
 def generate_user_data():
     with app.app_context():
         for user in user_data:
@@ -43,7 +57,7 @@ def generate_user_data():
                 name=user["name"],
                 contact=user["contact"],
                 email=user["email"],
-                password_hash=user["password"]  # This automatically hashes the password
+                password_hash=user["password"]  
             )
             db.session.add(user_record)
         db.session.commit()
@@ -72,11 +86,24 @@ def generate_review_data():
         db.session.commit()
         print(f'{len(review_data)} review records have been successfully added!')
 
-# Run the functions to generate data
+def generate_booking_data():
+    with app.app_context():
+        for booking in booking_data:
+            booking_record = Booking(
+                user_id=booking["user_id"],
+                service_id=booking["service_id"],
+                date=booking["date"],
+                status=booking["status"]
+            )
+            db.session.add(booking_record)
+        db.session.commit()
+        print(f'{len(booking_data)} booking records have been successfully added!')
+
 def run_seed():
     generate_user_data()
     generate_service_data()
     generate_review_data()
-
+    generate_booking_data() 
+    
 if __name__ == '__main__':
     run_seed()

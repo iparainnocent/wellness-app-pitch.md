@@ -1,4 +1,3 @@
-// auth.js
 import axios from 'axios';
 
 export const loginUser = async (email, password) => {
@@ -11,7 +10,7 @@ export const loginUser = async (email, password) => {
 
     if (response.status === 200) {
       const data = response.data;
-      localStorage.setItem('user', JSON.stringify(data)); // Store user data in local storage
+      localStorage.setItem('user', JSON.stringify(data)); 
       return data; // Return user data for further use
     }
   } catch (error) {

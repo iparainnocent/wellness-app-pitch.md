@@ -1,10 +1,15 @@
 import React from 'react';
 import ServiceCard from './ServiceCard';
-import serviceData from '../data/services.json'; // JSON file with service data
+import serviceData from '../data/services.json'; 
+import ServiceSearch from './Search'; 
 
 const ServiceSection = () => (
   <div className="container my-5">
     <h2 className="text-center mb-4">Our Services</h2>
+
+    {/* Include the search functionality here */}
+    <ServiceSearch />
+
     <div className="row">
       {serviceData.map((service, index) => (
         <ServiceCard
@@ -12,7 +17,7 @@ const ServiceSection = () => (
           service={service.service}
           description={service.description}
           image={service.image}
-          link={`/${service.service.toLowerCase()}`} // Set the link dynamically based on the service
+          link={`/${service.service.toLowerCase()}`} 
         />
       ))}
     </div>

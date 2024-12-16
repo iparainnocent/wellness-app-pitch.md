@@ -49,16 +49,16 @@ const LoginForm = ({ onClose }) => {
           // Delay closing the form
           setTimeout(() => {
             onClose(data); // Close the login form after a delay
-          }, 2000); // Adjust delay as needed (2000 ms = 2 seconds)
+          }, 2000); 
         }
       } catch (error) {
         console.error('Login error:', error);
 
         // Check if error response exists and handle specific errors
         if (error.response) {
-          if (error.response.status === 401) { // Assuming 401 is used for unauthorized access
+          if (error.response.status === 401) { 
             formik.setErrors({ general: 'Incorrect password' });
-          } else if (error.response.status === 404) { // Assuming 404 is used for user not found
+          } else if (error.response.status === 404) { 
             formik.setErrors({ general: 'Invalid email address' });
           } else {
             formik.setErrors({ general: 'An error occurred. Please try again later.' });
@@ -120,7 +120,7 @@ const LoginForm = ({ onClose }) => {
             )}
           </div>
 
-          {/* Display any general error message */}
+          {/* Displays any general error message */}
           {formik.errors.general && <div style={{ color: 'red', marginTop: '10px' }}>{formik.errors.general}</div>}
 
           <button type="submit">Login</button>

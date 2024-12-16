@@ -11,10 +11,8 @@ const ReviewComponent = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (currentReview.id) {
-            // Update existing review
             setReviews(reviews.map(review => (review.id === currentReview.id ? currentReview : review)));
         } else {
-            // Add new review
             setReviews([...reviews, { id: Date.now(), text: currentReview.text }]);
         }
         setCurrentReview({ id: null, text: '' }); // Reset input

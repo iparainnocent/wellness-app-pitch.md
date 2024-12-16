@@ -52,14 +52,16 @@ function Header({ activeSection, setActiveSection }) {
   return (
     <header ref={containerRef} className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        {/* Display the logo */}
+        {/* Display the logo and app name side by side */}
         <a className="navbar-brand" href="#">
-          <img
-            src="https://cdn3.vectorstock.com/i/1000x1000/23/32/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
-            alt="Wellness Center Logo"
-            className="logo"
-          />
-          <h1 className="app-name">Haven Wellness Center</h1>
+          <div className="logo-container">
+            <img
+              src="/images/wellness-center-logo-design-concept-spa-vector-33952332.jpg"
+              alt="Wellness Center Logo"
+              className="logo"
+            />
+            <h1 className="app-name">Haven Wellness Center</h1>
+          </div>
         </a>
 
         {/* Toggle button for small screens */}
@@ -124,6 +126,7 @@ function Header({ activeSection, setActiveSection }) {
           <LoginForm onClose={handleLoginSuccess} /> {/* Pass the success handler to LoginForm */}
         </div>
       )}
+      
     </header>
   );
 }

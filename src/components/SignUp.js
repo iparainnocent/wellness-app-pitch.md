@@ -2,10 +2,9 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { loginUser } from './auth'; // Import the login function
+import { loginUser } from './auth'; 
 
 const SignUp = ({ onSignUpSuccess }) => {
-  // Formik hook for handling form state and submission
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -35,30 +34,28 @@ const SignUp = ({ onSignUpSuccess }) => {
     }),
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       try {
-        // Send data to the backend server
         const response = await axios.post('http://localhost:5555/users', {
           name: values.name,
           contact: values.contact,
           email: values.email,
-          password: values.password // Send the password field
+          password: values.password 
         });
         
         if (response.status === 201) {
-          onSignUpSuccess(values.name); // Pass the username to the parent component
+          onSignUpSuccess(values.name); 
           alert('Sign-up successful!');
 
-          // Automatically log in the user after sign-up
+          
           const loggedInUser = await loginUser(values.email, values.password);
           if (loggedInUser) {
             console.log('User logged in:', loggedInUser);
-            // Optionally call another function or update state here if needed
           }
         }
       } catch (error) {
         console.error('There was an error!', error);
         setErrors({ general: 'Something went wrong. Please try again.' });
       } finally {
-        setSubmitting(false); // Stop the loading state after submission
+        setSubmitting(false); 
       }
     }
   });
@@ -144,7 +141,7 @@ const SignUp = ({ onSignUpSuccess }) => {
           )}
         </div>
 
-        {/* Display general error message if any */}
+        {/* Displays general error message if any */}
         {formik.errors.general && (
           <div className="signup-error">{formik.errors.general}</div>
         )}
