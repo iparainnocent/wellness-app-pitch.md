@@ -10,12 +10,12 @@ function HeroSection({ onExploreServices }) {
   };
 
   const handleSignUpSuccess = (name) => {
-    setUserName(name); // Set the username after successful sign-up
+    setUserName(name); // Set the username after successful sign-up style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }}
     setShowSignUp(false); // Hide the sign-up form
   };
 
   return (
-    <section className="hero bg-image text-center" style={{ backgroundImage: "url('/assets/hero-bg.jpg')" }}>
+    <section className="hero bg-image text-center" >
       <div className="container">
         <h1 className="display-4 text-white">Discover Wellness</h1>
         <p className="lead text-white">Yoga, Massage, and Therapy</p>
