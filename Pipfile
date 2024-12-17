@@ -11,6 +11,7 @@ Flask-Migrate = "*"
 Flask-RESTful = "*"
 SQLAlchemy-serializer="*"
 flask = "*"
+flask-cors = "*"
 
 [dev-packages]
 
