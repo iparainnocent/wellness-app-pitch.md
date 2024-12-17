@@ -47,9 +47,9 @@ Make sure you have the following installed:
    git clone https://github.com/iparainnocent/wellness-app-pitch.md.git
    cd wellness-app-pitch.md
 2. Create a virtual environment:
-       [python -m venv venv]
+       [pipenv install]
 3. Activate the virtual environment:
-       [venv\Scripts\activate]
+       [pipenv shell]
 4. Install the required packages:
     [pip install -r requirements.txt]
 5.  Set up the database:
@@ -69,7 +69,7 @@ Make sure you have the following installed:
 1. Make sure your virtual environment is activated.
 2. Run the Flask application:
      [flask run]
-The backend will run on http://127.0.0.1:5000.
+The backend will run on http://127.0.0.1:5555.
 
 ### Running the Frontend
 1. Navigate to the frontend directory
