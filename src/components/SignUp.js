@@ -34,7 +34,7 @@ const SignUp = ({ onSignUpSuccess }) => {
     }),
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       try {
-        const response = await axios.post('http://localhost:5555/users', {
+        const response = await axios.post('https://wellness-app-pitch-main.onrender.com/users', {
           name: values.name,
           contact: values.contact,
           email: values.email,

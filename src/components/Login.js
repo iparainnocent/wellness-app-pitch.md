@@ -32,7 +32,7 @@ const LoginForm = ({ onClose }) => {
     }),
     onSubmit: async (values) => {
       try {
-        const response = await axios.post('http://localhost:5555/login', values, {
+        const response = await axios.post('https://wellness-app-pitch-main.onrender.com/login', values, {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -72,7 +72,7 @@ const LoginForm = ({ onClose }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.delete('http://localhost:5555/logout');
+      const response = await axios.delete('https://wellness-app-pitch-main.onrender.com/logout');
       if (response.status === 200) {
         console.log('Logout successful');
         localStorage.removeItem('user');
